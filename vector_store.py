@@ -25,3 +25,6 @@ def add_embedding_to_index(embedding):
     real_index = index_faiss.ntotal - 1
 
     return real_index
+
+def user_by_faiss():
+    pass

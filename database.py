@@ -87,3 +87,7 @@ def insert_user(name, email, description):
 
     except sqlite3.Error as e:
         print(f"An error occurred: {e}", file=sys.stderr)
+
+
+def users_by_faiss():
+    pass
