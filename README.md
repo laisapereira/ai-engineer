@@ -55,39 +55,6 @@ OPENAI_API_KEY=sk-...
 uv run server.py
 ```
 
----
-
-## Integração com Claude Desktop
-
-Localize o arquivo de configuração:
-```
-C:\Users\<SeuUsuario>\AppData\Roaming\Claude\claude_desktop_config.json
-```
-
-Adicione:
-
-```json
-{
-  "mcpServers": {
-    "mcp-crm": {
-      "command": "C:\\Users\\<SeuUsuario>\\.local\\bin\\uv.exe",
-      "args": [
-        "--directory",
-        "<caminho-do-projeto>",
-        "run",
-        "server.py"
-      ]
-    }
-  }
-}
-```
-
-> Para encontrar o caminho do `uv`: `where.exe uv` no PowerShell.
-
-Reinicie o Claude Desktop completamente pelo system tray.
-
----
-
 ## Testando com MCP Inspector
 
 ```bash
