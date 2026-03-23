@@ -99,9 +99,9 @@ def users_by_faiss(faiss_indices):
                 faiss_index = index["faiss_index"]
                 score = index["score"]
 
-            query = "SELECT id_user, nm_usuario, email_usuario, ds_usuario FROM User WHERE cd_embedding = ?"
-            cursor.execute(query, (faiss_index,))
-            result = cursor.fetchone()
+                query = "SELECT id_user, nm_usuario, email_usuario, ds_usuario FROM User WHERE cd_embedding = ?"
+                cursor.execute(query, (faiss_index,))
+                result = cursor.fetchone()
 
             if result:
                 user = {
@@ -120,3 +120,28 @@ def users_by_faiss(faiss_indices):
 
     except sqlite3.Error as e:
         print(f"Can't fetch users by FAISS indices: {e}", file=sys.stderr)
+
+
+def get_user_by_id(user_id):
+    try:
+        with sqlite3.connect("user_database.db") as connection:
+            cursor = connection.cursor()
+
+            query = "SELECT id_user, nm_usuario, email_usuario, ds_usuario FROM User WHERE id_user = ?"
+            cursor.execute(query, (user_id,))
+            result = cursor.fetchone()
+
+            if result:
+                user = {
+                    "id_user": result[0],
+                    "nm_usuario": result[1],
+                    "email_usuario": result[2],
+                    "ds_usuario": result[3]
+                }
+                return user
+            else:
+                print(f"No user found with ID {user_id}", file=sys.stderr)
+                return None
+
+    except sqlite3.Error as e:
+        print(f"Can't fetch user by ID: {e}", file=sys.stderr)
