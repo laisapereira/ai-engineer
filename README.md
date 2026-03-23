@@ -93,8 +93,12 @@ Reinicie o Claude Desktop completamente pelo system tray.
 ```bash
 npx @modelcontextprotocol/inspector "C:\Users\<SeuUsuario>\.local\bin\uv.exe" --directory "<caminho-do-projeto>" run server.py
 ```
+Pois o inspector precisa de um proxy rodando localmente. Abra a URL gerada no browser para acessar a interface de testes.
 
-Abra a URL gerada no browser para acessar a interface de testes.
+<img width="1568" height="862" alt="image" src="https://github.com/user-attachments/assets/4c6638db-dd51-4199-97dc-2ca98afd65eb" />
+
+
+A tela fica 
 
 ---
 
