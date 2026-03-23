@@ -86,8 +86,37 @@ def insert_user(name, email, description):
             return userId
 
     except sqlite3.Error as e:
-        print(f"An error occurred: {e}", file=sys.stderr)
+        print(f"Can't insert this user {e}", file=sys.stderr)
 
 
-def users_by_faiss():
-    pass
+def users_by_faiss(faiss_indices):
+    try:
+        with sqlite3.connect("user_database.db") as connection:
+            cursor = connection.cursor()
+
+            similar_users = []
+            for index in faiss_indices:
+                faiss_index = index["faiss_index"]
+                score = index["score"]
+
+            query = "SELECT id_user, nm_usuario, email_usuario, ds_usuario FROM User WHERE cd_embedding = ?"
+            cursor.execute(query, (faiss_index,))
+            result = cursor.fetchone()
+
+            if result:
+                user = {
+                    "id_user": result[0],
+                    "nm_usuario": result[1],
+                    "email_usuario": result[2],
+                    "ds_usuario": result[3],
+                    "similarity_score": score
+                }
+                similar_users.append(user)
+
+            print(
+                f"Fetched {len(similar_users)} similar users from the database based on FAISS indices.", file=sys.stderr)
+
+            return similar_users
+
+    except sqlite3.Error as e:
+        print(f"Can't fetch users by FAISS indices: {e}", file=sys.stderr)

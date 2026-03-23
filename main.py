@@ -18,6 +18,7 @@ if __name__ == "__main__":
     user_id = insert_user("Lila Teste", "li4era.teste@example.com",
                           "A software developer with a passion for AI.")
 
+
     # mcp.run()
 
     # Or use HTTP transport

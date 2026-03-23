@@ -26,5 +26,12 @@ def add_embedding_to_index(embedding):
 
     return real_index
 
-def user_by_faiss():
-    pass
+
+def search_index(query_embedding, top_k) -> list[dict]:
+    query_array = np.array([query_embedding]).astype('float32')
+    distances, indices = index_faiss.search(query_array, top_k)
+
+    return [
+        {"faiss_index": int(idx), "score": float(dist)}
+        for idx, dist in zip(indices[0], distances[0])
+    ]
