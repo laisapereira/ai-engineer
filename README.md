@@ -64,7 +64,7 @@ Pois o inspector precisa de um proxy rodando localmente. Abra a URL gerada no br
 
 <img width="1568" height="862" alt="image" src="https://github.com/user-attachments/assets/4c6638db-dd51-4199-97dc-2ca98afd65eb" />
 
-Obs: Perceba o uso de "\\\" nos argumentos
+Obs: Perceba o uso de \ dupla nos argumentos
 ---
 
 ## Tools
