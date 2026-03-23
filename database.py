@@ -103,15 +103,15 @@ def users_by_faiss(faiss_indices):
                 cursor.execute(query, (faiss_index,))
                 result = cursor.fetchone()
 
-            if result:
-                user = {
-                    "id_user": result[0],
-                    "nm_usuario": result[1],
-                    "email_usuario": result[2],
-                    "ds_usuario": result[3],
-                    "similarity_score": score
-                }
-                similar_users.append(user)
+                if result:
+                    user = {
+                        "id_user": result[0],
+                        "nm_usuario": result[1],
+                        "email_usuario": result[2],
+                        "ds_usuario": result[3],
+                        "similarity_score": score
+                    }
+                    similar_users.append(user)
 
             print(
                 f"Fetched {len(similar_users)} similar users from the database based on FAISS indices.", file=sys.stderr)
